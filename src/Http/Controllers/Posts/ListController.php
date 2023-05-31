@@ -15,8 +15,8 @@ class ListController extends \Laravel\Lumen\Routing\Controller
         // Create query
         $elofilter = \Tots\EloFilter\Query::run(TotsPost::class, $request);
         // Custom filters
-        $elofilter->getQueryRequest()->addJoin('post_account', 'post_account.post_id', 'tots_post.id');
-        $elofilter->getQueryRequest()->addWhere('post_account.account_id', $account->id);
+        $elofilter->getQueryRequest()->addJoin('tots_post_account', 'tots_post_account.post_id', 'tots_post.id');
+        $elofilter->getQueryRequest()->addWhere('tots_post_account.account_id', $account->id);
         // Execute query
         return $elofilter->execute();
     }
